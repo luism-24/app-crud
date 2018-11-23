@@ -1,0 +1,29 @@
+<nz-card style="width:60%" nzTitle="Mensajes" [nzExtra]="extraTemplate">
+  <nz-table #basicTable>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Escritor</th>
+        <th>Message</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of messages">
+        <td>{{data.id}}</td>
+        <td>{{data.escritor}}</td>
+        <td>{{data.message}}</td>
+        <td>  
+          <div style="align-items: center" class="row">
+            <a style="margin-right: 20px" (click) = "deleteMessage(data.id)" >Eliminar</a>
+            <a (click) = "editMessage()" >Editar</a>
+        </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>
+<ng-template #extraTemplate>
+  <a (click) = "showModal()" >Nuevo mensaje</a>
+</ng-template>
+<app-message-modal [isVisible] = "isVisible"></app-message-modal>
